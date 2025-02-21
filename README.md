@@ -6,7 +6,7 @@ Review Collector is a simple web-based application that allows users to submit, 
 
 ## Live Demo
 
-[View Live Review](#)
+[View Live Review](https://rating-and-review-collector.onrender.com)
 
 ## Features
 
