@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ==================== REMIXICON ==================== -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <!-- ==================== TAILWIND CSS ==================== -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+    <!-- ==================== CSS ==================== -->
+    <link rel="stylesheet" href="./assets/css/styles.css">
+
+    <!-- ==================== TITLE ==================== -->
+    <title>Review Collector</title>
+</head>
+
+<body class="text-gray-600">
+    <!-- ==================== MAIN ==================== -->
+    <main class="grid grid-cols-2">
+        <section class="h-screen px-[6vw] pt-[46px] pb-12 border-r border-r-gray-300 overflow-y-auto">
+            <h1 class="text-gray-950 text-[32px] mb-2">Review Collector</h1>
+
+            <p class="mb-8">
+                Share your thoughts and experiences! Submit a
+                review and let others know what you think.
+            </p>
+
+            <div class="mb-5">
+                <div class="flex flex-col gap-[5px] mb-4">
+                    <label for="username" class="text-sm">User name</label>
+                    <input type="text" placeholder="John Doe"
+                        class="bg-gray-100 text-gray-950 px-4 py-3 border border-gray-300 rounded-lg placeholder:text-gray-500 outline-0"
+                        id="username">
+                </div>
+
+                <div class="mb-2.5">
+                    <div class="text-sm">Rating</div>
+
+                    <div class="flex items-center gap-2 -mt-1">
+                        <div class="text-gray-950 text-[40px]" id="rating">0</div>
+
+                        <div class="flex gap-1" id="rating-stars">
+                            <button class="text-2xl cursor-pointer transition hover:scale-110"><i
+                                    class="ri-star-fill text-gray-300"></i></button>
+                            <button class="text-2xl cursor-pointer transition hover:scale-110"><i
+                                    class="ri-star-fill text-gray-300"></i></button>
+                            <button class="text-2xl cursor-pointer transition hover:scale-110"><i
+                                    class="ri-star-fill text-gray-300"></i></button>
+                            <button class="text-2xl cursor-pointer transition hover:scale-110"><i
+                                    class="ri-star-fill text-gray-300"></i></button>
+                            <button class="text-2xl cursor-pointer transition hover:scale-110"><i
+                                    class="ri-star-fill text-gray-300"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative bg-gray-100 text-gray-950 border border-gray-300 rounded-lg overflow-hidden">
+                    <div class="absolute top-3 left-4 text-gray-500" id="placeholder-text">Write a review...</div>
+                    <div contenteditable="true" class="h-[80px] px-4 pt-3 outline-0 overflow-y-auto" id="review"></div>
+
+                    <div class="flex items-center justify-between p-4">
+                        <div class="flex" id="toolbar">
+                            <button
+                                class="w-8 h-8 text-lg flex items-center justify-center rounded-sm cursor-pointer hover:bg-gray-300 transition"
+                                data-command="bold"><i class="ri-bold"></i></button>
+                            <button
+                                class="w-8 h-8 text-lg flex items-center justify-center rounded-sm cursor-pointer hover:bg-gray-300 transition"
+                                data-command="italic"><i class="ri-italic"></i></button>
+                            <button
+                                class="w-8 h-8 text-lg flex items-center justify-center rounded-sm cursor-pointer hover:bg-gray-300 transition"
+                                data-command="underline"><i class="ri-underline"></i></button>
+                        </div>
+
+                        <button
+                            class="bg-blue-600 text-white px-5 py-2 rounded-full cursor-pointer hover:bg-blue-700 transition"
+                            id="btn-submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative h-screen px-[6vw] pb-12 overflow-y-auto">
+            <div class="sticky top-0 left-0 py-[52px] bg-white">
+                <div class="flex items-center justify-between mb-[40px]">
+                    <h2 class="text-gray-950 flex items-center gap-2">
+                        <span class="text-2xl">Reviews</span>
+                        <span class="bg-gray-100 px-2.5 py-1 rounded-full" id="reviews-count">0</span>
+                    </h2>
+
+                    <button class="text-blue-600 flex gap-1 cursor-pointer hover:text-blue-700 transition"
+                        id="btn-sort">
+                        <i class="ri-arrow-up-down-line"></i> Most recent
+                    </button>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="mb-[2px]">Average rating</div>
+
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-gray-950 text-2xl" id="average-rating">0</span>
+
+                            <span class="flex gap-1" id="average-rating-stars">
+                                <i class="ri-star-fill text-gray-300"></i>
+                                <i class="ri-star-fill text-gray-300"></i>
+                                <i class="ri-star-fill text-gray-300"></i>
+                                <i class="ri-star-fill text-gray-300"></i>
+                                <i class="ri-star-fill text-gray-300"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-end gap-4" id="rating-stats">
+                        <div class="flex flex-col items-center">
+                            <div class="relative mb-2">
+                                <div
+                                    class="relative w-[72px] h-[72px] bg-red-100 rounded-full before:absolute before:inset-1/2 before:-translate-1/2 before:w-[calc(100%-8px)] before:h-[calc(100%-8px)] before:bg-white before:rounded-full before:z-1 after:absolute after:inset-1/2 after:-translate-1/2 after:w-full after:h-full after:bg-conic after:from-red-500 after:to-red-100 after:from-0% after:to-0% after:rounded-full">
+                                </div>
+
+                                <div class="absolute inset-0 flex items-center justify-center z-1">
+                                    <span class="text-xl flex items-center gap-[2px]">
+                                        <i class="ri-star-fill text-red-500"></i>
+                                        <span class="text-gray-950">0</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <span class="text-sm flex items-center gap-[2px]">
+                                <i class="ri-user-line"></i> 0
+                            </span>
+                        </div>
+
+                        <div class="flex flex-col items-center">
+                            <div class="relative mb-2">
+                                <div
+                                    class="w-[88px] h-[88px] bg-green-100 rounded-full before:absolute before:inset-1/2 before:-translate-1/2 before:w-[calc(100%-8px)] before:h-[calc(100%-8px)] before:bg-white before:rounded-full before:z-1 after:absolute after:inset-1/2 after:-translate-1/2 after:w-full after:h-full after:bg-conic after:from-green-500 after:to-green-100 after:from-0% after:to-0% after:rounded-full">
+                                </div>
+
+                                <div class="absolute inset-0 flex items-center justify-center z-1">
+                                    <span class="text-xl flex items-center gap-[2px]">
+                                        <i class="ri-star-fill text-green-500"></i>
+                                        <span class="text-gray-950">0</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <span class="text-sm flex items-center gap-[2px]">
+                                <i class="ri-user-line"></i> 0
+                            </span>
+                        </div>
+
+                        <div class="flex flex-col items-center">
+                            <div class="relative mb-2">
+                                <div
+                                    class="w-[72px] h-[72px] bg-amber-100 rounded-full before:absolute before:inset-1/2 before:-translate-1/2 before:w-[calc(100%-8px)] before:h-[calc(100%-8px)] before:bg-white before:rounded-full before:z-1 after:absolute after:inset-1/2 after:-translate-1/2 after:w-full after:h-full after:bg-conic after:from-amber-500 after:to-amber-100 after:from-0% after:to-0% after:rounded-full">
+                                </div>
+
+                                <div class="absolute inset-0 flex items-center justify-center z-1">
+                                    <span class="text-xl flex items-center gap-[2px]">
+                                        <i class="ri-star-fill text-amber-500"></i>
+                                        <span class="text-gray-950">0</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <span class="text-sm flex items-center gap-[2px]">
+                                <i class="ri-user-line"></i> 0
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-4" id="reviews-container"></div>
+        </section>
+    </main>
+
+    <!-- ==================== MAIN JS ==================== -->
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>
