@@ -27,7 +27,7 @@ Review Collector is a simple web-based application that allows users to submit, 
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/janarahul1234/rating-and-review-collector.git
+   git clone https://github.com/janarahul1234/Rating-and-Review-Collector.git
    ```
 2. Navigate to the project directory:
    ```sh
